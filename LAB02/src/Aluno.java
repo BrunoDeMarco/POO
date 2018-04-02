@@ -7,8 +7,8 @@ public class Aluno {
 
     //Declaração das variáveis de estado
     public static final int ATIVO = 1;
-    public static final int INATIVO = 1;
-    public static final int SUSPENSO = 1;
+    public static final int INATIVO = 2;
+    public static final int SUSPENSO = 3;
 
     //Variável da geração de matrículas
     public static int idMatricula = 0;
@@ -69,12 +69,26 @@ public class Aluno {
         }
     }
 
+    public int getEstado() { return this.estado; }
+
     public void imprimeDados(){
         String saida = "#### Aluno\n";
         saida += "Matrícula: " + getMatricula() + "\n";
         saida += "Nome: " + getNome() + "\n";
         saida += "CPF: " + getCpf() + "\n";
         saida += "Curso: " + getCurso() + "\n";
+        //Checando qual o estado para atribuir à saída
+        switch(getEstado()){
+            case ATIVO:
+                saida += "Aluno ATIVO\n";
+                break;
+            case INATIVO:
+                saida += "Aluno INATIVO\n";
+                break;
+            case SUSPENSO:
+                saida += "Aluno SUSPENSO\n";
+                break;
+        }
         System.out.println(saida);
     }
 }
