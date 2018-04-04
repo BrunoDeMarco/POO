@@ -10,11 +10,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/mc302ef.jar!/" />
+          <root url="jar://$MODULE_DIR$/../LAB03/mc302ef.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/mc302ef.jar!/" />
+          <root url="jar://$MODULE_DIR$/../LAB03/mc302ef.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>

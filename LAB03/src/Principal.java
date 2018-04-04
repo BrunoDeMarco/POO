@@ -1,39 +1,43 @@
 public class Principal {
+    //Neste caso, optei por utilizar o gerador de matrículas na página principal, pois, na minha concepção, alunos e funcionários não podem ter o mesmo número de matrícula para terem geradores em suas respectivas classes.+
+    static int matricula = 0;
     public static void main(String[] args){
-        Aluno alunoAtivo = new Aluno(Aluno.ATIVO, Aluno.idMatricula++, "Bruno", "47543907844", 1);
-        Aluno alunoInativo = new Aluno(Aluno.INATIVO, Aluno.idMatricula++, "Bruno", "47543907844", 1);
-        Aluno alunoInativo = new Aluno(Aluno.SUSPENSO, Aluno.idMatricula++, "Bruno", "47543907844", 1);
+        //Instanciando 3 alunos
+        Aluno alunoAtivo = new Aluno(Aluno.ATIVO, geraMatricula(), "Ativo", "47543907844", 1);
+        Aluno alunoInativo = new Aluno(Aluno.INATIVO, geraMatricula(), "Inativo", "47543907844", 1);
+        Aluno alunoSuspenso = new Aluno(Aluno.SUSPENSO, geraMatricula(), "Suspenso", "47543907844", 1);
 
-        //Testando um aluno válido
-        Aluno aluno = new Aluno(1, "Bruno", "47543907844", 1);
-        aluno.imprimeDados();
-        //Tentando invalidar a matrícula
-        aluno.setMatricula(-5);
-        //Tentando invalidar o nome
-        aluno.setNome("a");
-        //Tentando invalidar o CPF
-        aluno.setCpf("12345");
-        //Tentando invalidar o curso
-        aluno.setCurso(-5);
-        //Imprimindo para ter certeza que nada foi alterado
-        aluno.imprimeDados();
-        //Alterando agora para um valor válido
-        aluno.setNome("Rafael");
-        aluno.imprimeDados();
-        
-       //Testando um funcionário válido
-        Funcionario funcionario = new Funcionario(2, "Ricardo", "58212347510");
-        funcionario.imprimeDados();
-        //Tentando invalidar a matrícula
-        funcionario.setMatricula(-8);
-        //Tentando invalidar o nome
-        funcionario.setNome("b");
-        //Tentando invalidar o CPF
-        funcionario.setCpf("123456");
-        //Imprimindo para ter certeza que nada foi alterado
-        funcionario.imprimeDados();
-        //Alterando agora para um valor válido
-        funcionario.setMatricula(10);
-        funcionario.imprimeDados();
+        //Testando alunos
+        alunoAtivo.imprimeDados();
+        alunoInativo.imprimeDados();
+        alunoSuspenso.imprimeDados();
+        if(alunoAtivo.getMatricula() == alunoInativo.getMatricula() || alunoAtivo.getMatricula() == alunoSuspenso.getMatricula() || alunoInativo.getMatricula() == alunoSuspenso.getMatricula()){
+            System.out.println("ERRO: MATRICULAS IGUAIS");
+            //Interrompe a execução pois houve um erro.
+            return;
+        }
+
+       //Instanciando 3 funcionarios
+        Funcionario funcionario1 = new Funcionario(geraMatricula(), "Ricardo", "58212347510");
+        Funcionario funcionario2 = new Funcionario(geraMatricula(), "Ricardo", "58212347510");
+        Funcionario funcionario3 = new Funcionario(geraMatricula(), "Ricardo", "58212347510");
+
+        //Testando funcionarios
+        funcionario1.imprimeDados();
+        funcionario2.imprimeDados();
+        funcionario3.imprimeDados();
+        if(funcionario1.getMatricula() == funcionario2.getMatricula() || funcionario1.getMatricula() == funcionario2.getMatricula() || funcionario2.getMatricula() == funcionario3.getMatricula()){
+            System.out.println("ERRO: MATRÍCULAS IGUAIS.");
+        }
+
+        //Testando disciplinas
+        Disciplina d = new Disciplina(1);
+        d.addAluno(18);
+        d.addAluno(26);
+        d.imprimeDados();
+    }
+
+    public static int geraMatricula(){
+        return matricula++;
     }
 }
