@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Aluno extends Pessoa{
+public abstract class Aluno extends Pessoa{
+
+    //Método abstrato
+    public abstract boolean foiAprovado(double nota);
 
     private Curso curso;
     private int estado;

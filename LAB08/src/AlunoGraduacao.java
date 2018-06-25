@@ -7,12 +7,16 @@ public class AlunoGraduacao extends Aluno {
         this.cr = super.getMedia();
     }
 
-
     public void setAnoLimite(){
         super.anoLimite = calculaAnoMaxIntegralizacao();
     }
 
     public int calculaAnoMaxIntegralizacao(){
         return super.getAnoIngresso() + 7;
+    }
+
+    @Override
+    public boolean foiAprovado(double nota) {
+        return nota >= 5;
     }
 }

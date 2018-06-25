@@ -55,4 +55,9 @@ public class AlunoPos extends Aluno{
         System.out.println(ingles);
         System.out.println(exame);
     }
+
+    @Override
+    public boolean foiAprovado(double nota) {
+        return nota >= 5;
+    }
 }
